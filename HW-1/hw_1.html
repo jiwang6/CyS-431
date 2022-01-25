@@ -14566,7 +14566,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h1 id="CyS-431---HW-1">CyS 431 - HW 1<a class="anchor-link" href="#CyS-431---HW-1">&#182;</a></h1><p>C1C Jim Wang</p>
-<p>13 Jan 2021</p>
+<p>25 Jan 2021</p>
 
 </div>
 </div>
@@ -14771,6 +14771,7 @@ $$<p>Thus, $\alpha = 19$ and $\beta = 12$. I don't feel like coding this.</p>
             <span class="n">o_array</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">gamma</span> <span class="o">*</span> <span class="p">(</span><span class="n">i</span> <span class="o">-</span> <span class="n">beta</span><span class="p">)</span> <span class="o">%</span> <span class="mi">26</span><span class="p">)</span>
         <span class="k">return</span><span class="p">(</span><span class="n">alphabet_map</span><span class="p">(</span><span class="n">o_array</span><span class="p">))</span>
     <span class="k">else</span><span class="p">:</span>
+        <span class="n">cipher_string</span> <span class="o">=</span> <span class="n">cipher_string</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">i_array</span><span class="p">:</span>
             <span class="n">o_array</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">alpha</span><span class="o">*</span><span class="n">i</span> <span class="o">+</span> <span class="n">beta</span> <span class="p">)</span> <span class="o">%</span><span class="k">26</span>)
         <span class="k">return</span><span class="p">(</span><span class="n">alphabet_map</span><span class="p">(</span><span class="n">o_array</span><span class="p">)</span><span class="o">.</span><span class="n">upper</span><span class="p">())</span>
@@ -14789,8 +14790,8 @@ $$<p>Thus, $\alpha = 19$ and $\beta = 12$. I don't feel like coding this.</p>
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;decoded message is: &quot;</span> <span class="o">+</span> <span class="n">affine</span><span class="p">(</span><span class="s2">&quot;YXCYIS&quot;</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="kc">True</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;plugging back into the affine: &quot;</span> <span class="o">+</span> <span class="n">affine</span><span class="p">(</span><span class="s2">&quot;crucio&quot;</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="kc">False</span><span class="p">))</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;decoded message is: &quot;</span> <span class="o">+</span> <span class="n">affine</span><span class="p">(</span><span class="s2">&quot;YXCYIS&quot;</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="n">decode</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;plugging back into the affine: &quot;</span> <span class="o">+</span> <span class="n">affine</span><span class="p">(</span><span class="s2">&quot;crucio&quot;</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="n">decode</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
 </pre></div>
 
      </div>
@@ -14826,7 +14827,8 @@ plugging back into the affine: YXCYIS
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="What-kind-of-attack-is-this?">What kind of attack is this?<a class="anchor-link" href="#What-kind-of-attack-is-this?">&#182;</a></h3><p>This is a ciphertext only attack as we do not have the encryption or decryption machine ($\alpha$ and $\beta$ are undefined in the problem statement).</p>
+<h3 id="(b)-What-kind-of-attack-is-this?">(b) What kind of attack is this?<a class="anchor-link" href="#(b)-What-kind-of-attack-is-this?">&#182;</a></h3><p>This is a ciphertext only attack as we do not have the encryption or decryption machine ($\alpha$ and $\beta$ are undefined in the problem statement).</p>
+<p>Just kidding it's a known plaintext attack.</p>
 
 </div>
 </div>
@@ -14837,6 +14839,11 @@ plugging back into the affine: YXCYIS
 <h2 id="Question-2">Question 2<a class="anchor-link" href="#Question-2">&#182;</a></h2><p>Suppose we encrypt a message with an affine cipher using key K1, then encrypt
 the ciphertext with an affine cipher using key K2. Is this double encryption more
 secure than just doing a single encryption? Support your answer mathematically.</p>
+<p>No, this is primarily because the size of the key space remains relatively similar between affine and double affine.</p>
+<p>Consider the affine cypher. Let $P$, $C_1$, $C_2$ be the plaintext, singly encrypted affine, and doubly encrypted affine respectively.</p>
+<p>Further, let $\alpha$, $\beta$ be keys for the affine such that $C_1 \equiv \alpha P + \beta \mod{26}$. While $\beta$ can have 26 values $\beta \in \{0,2,3\dots,25\}$, $\alpha$ is restricted to all natural numbers under 26 such that $\text{gcd}(\alpha, 26) = 1$. Thus, $\alpha$ may have $\phi(26) = \phi(2) * \phi(13) = 1 * 12 = 12$ possible values. Thus, the key space for the affine cipher has only $12*26 = 312$ keys.</p>
+<p>Let $\gamma$ and $\delta$ be the keys for the second encryption such that $C_2 \equiv \gamma C_1 + \delta \mod{26} \Rightarrow C_2 \equiv \gamma (\alpha P + \beta ) + \delta \mod{26}$. Thus, there are $312*312 = 97344$ keys.</p>
+<p>While this may seem like a significant change, it is still an insignificant key size for a computer. Thus, double affine is not more secure.</p>
 
 </div>
 </div>
@@ -14844,7 +14851,11 @@ secure than just doing a single encryption? Support your answer mathematically.<
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>no</p>
+<h2 id="Question-3">Question 3<a class="anchor-link" href="#Question-3">&#182;</a></h2><p>Suppose our alphabet has only 3 letters, A, B, and C, which occur in plaintext
+with frequency 75%, 15%, 10%, respectively. A message is encrypted with a
+Vigenere cipher (mod 3, of course), using a key that is of length 1, 2, or 3 (you don’t
+know which). If the ciphertext is CBCABAAACA.</p>
+<h3 id="(a)-What-is-the-key-length?">(a) What is the key length?<a class="anchor-link" href="#(a)-What-is-the-key-length?">&#182;</a></h3><p>We're scripting!</p>
 
 </div>
 </div>
@@ -14858,14 +14869,73 @@ secure than just doing a single encryption? Support your answer mathematically.<
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">re</span>
 
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;testFiles/hw1.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
-    <span class="n">rawString</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">find_key_size</span><span class="p">(</span><span class="n">cipher_text</span><span class="p">):</span>
+    <span class="n">regex</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s1">&#39;[^a-zA-Z]&#39;</span><span class="p">)</span>
+    <span class="n">cipher_text</span> <span class="o">=</span> <span class="n">regex</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">cipher_text</span><span class="p">)</span>
+    <span class="n">cipher_arr</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">cipher_text</span><span class="p">)</span>
 
-<span class="n">rawString</span> <span class="o">=</span> <span class="n">rawString</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
-<span class="n">rawString</span> <span class="o">=</span> <span class="n">rawString</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
-<span class="n">rawString</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;[^\w\s]&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">rawString</span><span class="p">)</span>
+    <span class="n">shift_dict</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">shift_value</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">cipher_arr</span><span class="p">)):</span>
+        <span class="n">match</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">cipher_arr</span><span class="p">)):</span>
+            <span class="k">if</span> <span class="n">cipher_arr</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="n">cipher_arr</span><span class="p">[(</span><span class="n">i</span> <span class="o">+</span> <span class="n">shift_value</span><span class="p">)</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">cipher_arr</span><span class="p">)]:</span>
+                <span class="k">match</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="n">shift_dict</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="n">shift_value</span><span class="p">:</span><span class="n">match</span><span class="p">})</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">return</span> <span class="nb">max</span><span class="p">(</span><span class="n">shift_dict</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">shift_dict</span><span class="o">.</span><span class="n">get</span><span class="p">)</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">0</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;the most likely key size is: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">find_key_size</span><span class="p">(</span><span class="s2">&quot;CBCABAAACA&quot;</span><span class="p">)))</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
 
 
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>the most likely key size is: 2
+</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="(b)-What-is-the-key?">(b) What is the key?<a class="anchor-link" href="#(b)-What-is-the-key?">&#182;</a></h3><p>By using the book's technique, we find that the most likely key size has length 2. We will now conduct frequency analysis on the letters of indices modulo 2.</p>
+
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># helper function from #9 originally but it&#39;s useful here since we&#39;re doing the same thing</span>
 <span class="k">def</span> <span class="nf">frequency</span><span class="p">(</span><span class="n">txt</span><span class="p">,</span> <span class="n">sign</span><span class="p">):</span>
     <span class="n">counter</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">txt</span><span class="p">:</span>
@@ -14875,17 +14945,149 @@ secure than just doing a single encryption? Support your answer mathematically.<
     <span class="k">return</span> <span class="n">counter</span>
 
 
-<span class="n">valDict</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">def</span> <span class="nf">find_key</span><span class="p">(</span><span class="n">cipher_text</span><span class="p">):</span>
+    <span class="n">key_length</span> <span class="o">=</span> <span class="n">find_key_size</span><span class="p">(</span><span class="n">cipher_text</span><span class="p">)</span>
+    <span class="n">cipher_arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">cipher_text</span><span class="p">))</span>
+
+    <span class="n">string_array</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">dict_array</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">key_array</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">for</span> <span class="n">mod_val</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">key_length</span><span class="p">):</span>
+        <span class="n">string_array</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cipher_arr</span><span class="p">[</span><span class="n">mod_val</span><span class="p">::</span><span class="n">key_length</span><span class="p">])</span>
+
+    <span class="k">for</span> <span class="n">string</span> <span class="ow">in</span> <span class="n">string_array</span><span class="p">:</span>
+        <span class="n">value_dict</span> <span class="o">=</span> <span class="p">{}</span>
+
+        <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="s1">&#39;ABC&#39;</span><span class="p">:</span>
+            <span class="n">word_freq</span> <span class="o">=</span> <span class="n">frequency</span><span class="p">(</span><span class="n">string</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+            <span class="n">percent</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">*</span> <span class="n">word_freq</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">string</span><span class="p">)</span>
+            <span class="n">value_dict</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="n">s</span><span class="p">:</span> <span class="n">percent</span><span class="p">})</span>
+
+        <span class="n">value_dict</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span>
+            <span class="n">value_dict</span><span class="o">.</span><span class="n">items</span><span class="p">(),</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">item</span><span class="p">:</span> <span class="n">item</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)}</span>
+
+        <span class="n">dict_array</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">value_dict</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">word_dict</span> <span class="ow">in</span> <span class="n">dict_array</span><span class="p">:</span>
+        <span class="n">val</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">word_dict</span><span class="o">.</span><span class="n">keys</span><span class="p">())[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">key_array</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+
+    <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="k">return</span> <span class="nb">str</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">key_array</span><span class="p">)</span>
+
+<span class="c1">#key is CA</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;A likely key is: &quot;</span> <span class="o">+</span> <span class="n">find_key</span><span class="p">(</span><span class="s2">&quot;CBCABAAACA&quot;</span><span class="p">))</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>A likely key is: CA
+</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Quesiton-4">Quesiton 4<a class="anchor-link" href="#Quesiton-4">&#182;</a></h2><h3 id="a)">a)<a class="anchor-link" href="#a)">&#182;</a></h3><p>Our friend is correct this time, surprisingly... but why?</p>
+<h3 id="b)">b)<a class="anchor-link" href="#b)">&#182;</a></h3><p>Consider the</p>
+
+</div>
+</div>
+</div>
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Quesiton-5">Quesiton 5<a class="anchor-link" href="#Quesiton-5">&#182;</a></h2><p>We want to find the entropy for a coin flip: We use the formula</p>
+$$
+    \begin{align}
+        H(E_1) = -\sum_{x\in X} p(x)\log_2(p(x)) = -(0.5*-2 + 0.5 * -2) = 1
+    \end{align}
+$$
+</div>
+</div>
+</div>
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Quesiton-6">Quesiton 6<a class="anchor-link" href="#Quesiton-6">&#182;</a></h2><p>idfk</p>
+
+</div>
+</div>
+</div>
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Quesiton-7">Quesiton 7<a class="anchor-link" href="#Quesiton-7">&#182;</a></h2><p>bruh</p>
+
+</div>
+</div>
+</div>
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Quesiton-8">Quesiton 8<a class="anchor-link" href="#Quesiton-8">&#182;</a></h2><p>reee</p>
+
+</div>
+</div>
+</div>
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Question-9">Question 9<a class="anchor-link" href="#Question-9">&#182;</a></h2><p>Write a small program that loads in a text file of any size and then prints the
+frequency (as a percentage) of each character (‘a’..’z’). All characters should be made
+lowercase for counting purposes. Ignore punctuation, spaces, etc.</p>
+
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;../testFiles/hw1.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+    <span class="n">raw_string</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+
+<span class="n">regex</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s1">&#39;[^a-zA-Z]&#39;</span><span class="p">)</span>
+<span class="n">raw_string</span> <span class="o">=</span> <span class="n">regex</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">raw_string</span><span class="p">)</span>
+
+<span class="n">value_dict</span> <span class="o">=</span> <span class="p">{}</span>
 
 <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="s1">&#39;abcdefghijklmnopqrstuvwxyz&#39;</span><span class="p">:</span>
-    <span class="n">howMany</span> <span class="o">=</span> <span class="n">frequency</span><span class="p">(</span><span class="n">rawString</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
-    <span class="n">percent</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">*</span> <span class="n">howMany</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">rawString</span><span class="p">)</span>
-    <span class="n">valDict</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="n">s</span><span class="p">:</span> <span class="n">percent</span><span class="p">})</span>
+    <span class="n">word_freq</span> <span class="o">=</span> <span class="n">frequency</span><span class="p">(</span><span class="n">raw_string</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+    <span class="n">percent</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">*</span> <span class="n">word_freq</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">raw_string</span><span class="p">)</span>
+    <span class="n">value_dict</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="n">s</span><span class="p">:</span> <span class="n">percent</span><span class="p">})</span>
 
-<span class="n">valDict</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span>
-    <span class="n">valDict</span><span class="o">.</span><span class="n">items</span><span class="p">(),</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">item</span><span class="p">:</span> <span class="n">item</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)}</span>
+<span class="n">value_dict</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span>
+    <span class="n">value_dict</span><span class="o">.</span><span class="n">items</span><span class="p">(),</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">item</span><span class="p">:</span> <span class="n">item</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)}</span>
 
-<span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">valDict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+<span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">value_dict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
     <span class="n">val</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\&#39;</span><span class="s1">&#39;</span> <span class="o">+</span> <span class="n">key</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\&#39;</span><span class="s1">&#39;</span> <span class="o">+</span> <span class="s1">&#39; - &#39;</span> <span class="o">+</span> <span class="n">val</span> <span class="o">+</span> <span class="s1">&#39;%&#39;</span><span class="p">)</span>
 </pre></div>
@@ -14909,32 +15111,32 @@ secure than just doing a single encryption? Support your answer mathematically.<
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>&#39;e&#39; - 11.96%
-&#39;t&#39; - 9.25%
-&#39;a&#39; - 7.58%
-&#39;i&#39; - 6.95%
-&#39;n&#39; - 6.41%
-&#39;o&#39; - 6.18%
-&#39;h&#39; - 5.87%
-&#39;r&#39; - 5.46%
-&#39;s&#39; - 5.01%
-&#39;c&#39; - 3.84%
-&#39;l&#39; - 3.75%
-&#39;y&#39; - 3.02%
-&#39;p&#39; - 2.84%
-&#39;u&#39; - 2.66%
-&#39;d&#39; - 2.08%
-&#39;f&#39; - 1.99%
-&#39;g&#39; - 1.99%
-&#39;w&#39; - 1.85%
-&#39;b&#39; - 1.67%
-&#39;m&#39; - 1.67%
-&#39;k&#39; - 1.08%
-&#39;v&#39; - 0.63%
-&#39;x&#39; - 0.63%
-&#39;q&#39; - 0.23%
-&#39;z&#39; - 0.18%
-&#39;j&#39; - 0.09%
+<pre>&#39;e&#39; - 12.61%
+&#39;t&#39; - 9.75%
+&#39;a&#39; - 7.99%
+&#39;i&#39; - 7.33%
+&#39;n&#39; - 6.76%
+&#39;o&#39; - 6.52%
+&#39;h&#39; - 6.18%
+&#39;r&#39; - 5.76%
+&#39;s&#39; - 5.28%
+&#39;c&#39; - 4.04%
+&#39;l&#39; - 3.95%
+&#39;y&#39; - 3.19%
+&#39;p&#39; - 3.0%
+&#39;u&#39; - 2.81%
+&#39;d&#39; - 2.19%
+&#39;f&#39; - 2.09%
+&#39;g&#39; - 2.09%
+&#39;w&#39; - 1.95%
+&#39;b&#39; - 1.76%
+&#39;m&#39; - 1.76%
+&#39;k&#39; - 1.14%
+&#39;v&#39; - 0.67%
+&#39;x&#39; - 0.67%
+&#39;q&#39; - 0.24%
+&#39;z&#39; - 0.19%
+&#39;j&#39; - 0.1%
 </pre>
 </div>
 </div>
