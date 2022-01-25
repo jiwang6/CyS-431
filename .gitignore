@@ -1,3 +1,4 @@
+.gitignore
 .DS_Store
 HW-1/.ipynb_checkpoints/
 PEX-1/__pycache__
