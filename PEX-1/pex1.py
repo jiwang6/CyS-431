@@ -6,6 +6,9 @@ import time
 
 def brute_factor(n):
 	up_bound =  math.floor(pow(n,1/2))
+	for i in range(1,up_bound+1):
+		if n % i == 0:
+			return i
 
 def pollard_rho(n, factor_arry, seed=2, f=lambda x: x**2 + 1):
 	a, b, d = seed, seed, 1
@@ -57,6 +60,8 @@ def miller_rabin(n, t):
 	
 
 if __name__ == "__main__": # main funciton loop
+	print("PEX1 - Factoring! - by Cadet Awesomesauce \nCyS 431")
+	print(brute_factor(16))
 	""" 
 	n = 124076833
 	factors = []
@@ -69,4 +74,4 @@ if __name__ == "__main__": # main funciton loop
 
 	i = n
 	print(f"{i} is Prime" if miller_rabin(i,5) else f"{i} is not Prime", end = "\n\n")
-	"""
+	 """
