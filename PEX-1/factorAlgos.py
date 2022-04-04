@@ -3,7 +3,7 @@ import math
 
 def brute_force(n):
 	upper_lim = math.isqrt(n)
-	print(upper_lim)
+	#print(upper_lim)
 
 	if (n%2==0):
 		return(2)
@@ -12,40 +12,33 @@ def brute_force(n):
 		if (n%i==0):
 			return(i)
 
-def pollard_rho(n, factor_arry, seed=2, f=lambda x: x**2 + 1):
+def pollard_rho(n, seed=3, f=lambda x: x**2 + 1):
 	a, b, d = seed, seed, 1
 	while d == 1:
 		a = f(a) % n
 		b = f(f(b)) % n
 		d = math.gcd((a - b) % n, n)
 		m = n/d
-	if d != n and m.is_integer:
-		print(f"factor p = {d} found; a = {a}, b = {b}")
+	return (d, a, b) if d != n and m.is_integer else (-1, -1, -1)
 
-		factor_arry.append(d)
-		pollard_rho(int(m), factor_arry)
-	else:
-		factor_arry.append(d)
-
-
-def miller_rabin(n, t):
+def fast_MR(n, t):
 	s, r = 0, n - 1
 	while r % 2 == 0:
 		s += 1
 		r //= 2
 
-	print(f"{n} = 2^{s} * {r} + 1")
+	#print(f"{n} = 2^{s} * {r} + 1")
 
 	if n == 2:
 		return True
 	if n % 2 == 0:
 		return False
 
-	print("good equations:")
+	#print("good equations:")
 	for _ in range(t):
-		a = random.randrange(2, n - 1)
-		y = pow(a, r, n)
-		print(f"{y} = {a}^{r} (mod {n})")
+		x = random.randrange(2, n - 1)
+		y = pow(x, r, n)
+		print(f"{y} = {x}^{r} (mod {n})")
 
 		if y in [1, n - 1]:
 			continue
@@ -54,10 +47,23 @@ def miller_rabin(n, t):
 			if y == n - 1:
 				break
 		else:
-			return False
-	return True
+			return math.gcd(abs(x-y), n)
+	return -1
 
 
 if __name__ == "__main__": # main funciton loop
-	challenge = 213016805697990920376675714115937442919
-	print(brute_force(167))
+	tests = [1762741, 6937031, 3572694269, 498587077741, 
+		388616539515299129, 24232273352113381895280635789, 
+		213016805697990920376675714115937442919]
+	curr_test = tests[0]
+
+
+	print(f"testing {curr_test}")
+	#print(brute_force(curr_test))
+	d,a,b = pollard_rho(curr_test)
+	print(f"d = {d}, a = {a}, b = {b}")
+
+	print(fast_MR(curr_test,30))
+
+	#div = curr_test/d
+	#print(f"{d} * {div} = {curr_test}")

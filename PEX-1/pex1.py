@@ -1,6 +1,6 @@
 import time
 
-from factorAlgos import brute_force, pollard_rho, miller_rabin
+from factorAlgos import brute_force, pollard_rho, fast_MR
 
 print("PEX1 - Factoring! - by Cadet Awesomesauce \nCyS 431")
 
