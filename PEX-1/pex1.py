@@ -47,10 +47,5 @@ def main():
 				time = "{:.2f}".format(time)
 				print(f"Found a factor = {factor}\na = {a}, b = {b}\nIt took {time} seconds.")
 
-
-
-
-
-
 if __name__ == "__main__":
 	main()
