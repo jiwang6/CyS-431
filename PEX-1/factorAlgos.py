@@ -8,12 +8,12 @@ from primegen import gen_primes
 
 
 def brute_force(n):
-	upper_lim = math.isqrt(n)
-
 	if (n % 2 == 0):
 		return(2)
+		
+	upper_lim = int(sqrt(n))
 
-	return next((i for i in list(sympy.primerange(upper_lim)) if (n % i == 0)), -1)
+	return next((i for i in list(sympy.primerange(upper_lim+1)) if (n % i == 0)), -1)
 
 
 def pollard_rho(n, seed=3, f=lambda x: x**2 + 1):
@@ -41,7 +41,7 @@ if __name__ == "__main__":  # main funciton loop
 	tests = [1762741, 6937031, 3572694269, 498587077741,
 			 388616539515299129, 24232273352113381895280635789,
 			 213016805697990920376675714115937442919]
-	#curr_test = tests[int(input("case? ")) % 7]
+
 	curr_test = tests[0]
 
 	print(f"testing {curr_test}")

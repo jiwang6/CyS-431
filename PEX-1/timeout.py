@@ -1,6 +1,6 @@
 import signal
 import time
-from factorAlgos import pollard_rho
+from factorAlgos import brute_force, pollard_rho
 
 class timeout:
     def __init__(self, seconds=1, error_message='Timeout'):
@@ -21,13 +21,15 @@ def run_forever():
 		time.sleep(1)
 		second += 1
 
-def attempt_factor(attempt_count  = 3, t_limit = 5, test_funct = run_forever, test_prime = None):
-	for _ in range(attempt_count):
+def attempt_factor(attempt_count = 3, t_limit = 120, test_funct = run_forever, test_prime = None):
+	for i in range(attempt_count):
 		try:
-			with timeout(seconds = t_limit): 
-				return(test_funct(test_prime))
+			with timeout(seconds = t_limit):
+				start_time = time.time()
+				return(test_funct(test_prime)), time.time() - start_time
 		except Exception:
-			print(f"Failed to factor in under {t_limit} seconds")
+			print(f"Attempt {i+1} failed to factor in under {t_limit} seconds")
+	return -2, -2
 
 if __name__	== "__main__":	
-	attempt_factor(test_funct = pollard_rho, test_prime=1762741)
+	print(attempt_factor(t_limit = 120, test_funct = pollard_rho, test_prime=1762741))
