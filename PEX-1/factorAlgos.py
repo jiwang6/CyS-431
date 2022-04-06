@@ -1,6 +1,5 @@
 import numpy as np
 from math import sqrt, gcd
-import itertools
 import random
 import math
 import sympy
@@ -8,6 +7,8 @@ from primegen import gen_primes
 
 
 def brute_force(n):
+	if n == 2:
+		return -1
 	if (n % 2 == 0):
 		return(2)
 		
@@ -16,12 +17,16 @@ def brute_force(n):
 	return next((i for i in list(sympy.primerange(upper_lim+1)) if (n % i == 0)), -1)
 
 
-def pollard_rho(n, seed=3, f=lambda x: x**2 + 1):
+def pollard_rho(n, f=lambda x: x**2 + 1):
+	if n in [1,2,3]:
+		return (-1, -1, -1)
+
+	seed = random.randint(2,n-1)
 	a, b, d = seed, seed, 1
 	while d == 1:
 		a = f(a) % n
 		b = f(f(b)) % n
-		d = math.gcd((a - b) % n, n)
+		d = gcd((a - b) % n, n)
 		m = n/d
 	return (d, a, b) if d != n and m.is_integer else (-1, -1, -1)
 
@@ -33,8 +38,6 @@ def dixon(n,t=5):
 
 	for i in range(1,t+1):
 		print(f"{i} ")
-
-
 
 
 if __name__ == "__main__":  # main funciton loop

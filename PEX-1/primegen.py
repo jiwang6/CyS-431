@@ -1,4 +1,5 @@
 import re
+import numpy as np
 
 def isPrime(n):
 	"""
@@ -11,7 +12,7 @@ def isPrime(n):
 
 def gen_primes(n):
 	"""
-	Generate a list of prime numbers less than n
+	Generate a list of first n prime numbers
 	
 	:param n: The number of primes you want to generate
 	:return: A list of prime numbers.
@@ -25,4 +26,4 @@ def gen_primes(n):
 		l += filter(isPrime, range(M - 100, M)) 
 		M += 100                                
 
-	return l[:N]
+	return np.array(l[:N])

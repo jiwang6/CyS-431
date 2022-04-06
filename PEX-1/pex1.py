@@ -2,12 +2,12 @@ from timeout import attempt_factor
 from factorAlgos import brute_force, pollard_rho, dixon
 
 def main():
-	print("PEX1 - Factoring! - by Cadet Awesomesauce \nCyS 431")
+	print("PEX1 - Factoring! - by C/Wang \nCyS 431")
 
 	while True: # main driver funct
 		cases = []
 		while True:
-			number = input("Enter a number (0 to exit): ")
+			number = input("Enter a number (0 to exit, -1 for test cases): ")
 			try:
 				n = int(number)
 				if n < -1: 

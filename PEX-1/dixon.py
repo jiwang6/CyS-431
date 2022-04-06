@@ -1,19 +1,16 @@
 import numpy as np
-
-def ExponentVector(n, b):
-    EV = np.zeros(b.size)
-    if n % b[0] == 0:
-        EV[0] = 1
-    for i in range(1, b.size):
-        if n % b[i] == 0:
-            EV[i] = 1
-            j = 0
-            while n % b[i]**j == 0:
-                j += 1
-                EV[i] = j - 1
-        else:
-            EV[i] = 0
-    return EV
+from primegen import gen_primes
 
 
-if 
+def dixon(n,t=5):
+	
+	base = gen_primes(t)
+	print(f"Done generating factor base: {base}")
+
+	for i in range(1,t+1):
+		print(f"{i} ")
+
+
+if __name__ == "__main__":
+    print("fuck")
+    
