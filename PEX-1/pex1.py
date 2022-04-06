@@ -38,14 +38,15 @@ def main():
 
 			print("\nPollard's Rho")
 			factor_arry, time = attempt_factor(test_funct = pollard_rho, test_prime = test_num, attempt_count = 3, t_limit=2)
-			if factor_arry != -2:
+			if factor_arry == -2:
+				pass
+			elif factor_arry[0] == -1:
+				print(f"{test_num} appears to be prime.")
+			else:
 				factor, a, b = factor_arry[0], factor_arry[1], factor_arry[2]
 				time = "{:.2f}".format(time)
 				print(f"Found a factor = {factor}\na = {a}, b = {b}\nIt took {time} seconds.")
 
-			elif factor_arry[0] == -1:
-				print(f"{test_num} appears to be prime.")
-			
 
 
 
