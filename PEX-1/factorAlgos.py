@@ -3,19 +3,17 @@ from math import sqrt, gcd
 import itertools
 import random
 import math
-
+import sympy
+from primegen import gen_primes
 
 
 def brute_force(n):
 	upper_lim = math.isqrt(n)
-	# print(upper_lim)
 
 	if (n % 2 == 0):
 		return(2)
 
-	for i in range(3, upper_lim+1, 2):
-		if (n % i == 0):
-			return(i)
+	return next((i for i in list(sympy.primerange(upper_lim)) if (n % i == 0)), -1)
 
 
 def pollard_rho(n, seed=3, f=lambda x: x**2 + 1):
@@ -28,80 +26,27 @@ def pollard_rho(n, seed=3, f=lambda x: x**2 + 1):
 	return (d, a, b) if d != n and m.is_integer else (-1, -1, -1)
 
 
-def fast_MR(n, t):
-	s, r = 0, n - 1
-	while r % 2 == 0:
-		s += 1
-		r //= 2
+def dixon(n,t=5):
+	
+	base = gen_primes(t)z
+	print("Done generating factor base.")
 
-	#print(f"{n} = 2^{s} * {r} + 1")
+	for i in range(1,t+1):
+		print(f"{i} ")
 
-	if n == 2:
-		return True
-	if n % 2 == 0:
-		return False
-
-	#print("good equations:")
-	for _ in range(t):
-		x = random.randrange(2, n - 1)
-		y = pow(x, r, n)
-		print(f"{y} = {x}^{r} (mod {n})")
-
-		if y in [1, n - 1]:
-			continue
-		for _ in range(s - 2):
-			y = pow(y, 2, n)
-			if y == n - 1:
-				break
-		else:
-			return math.gcd(abs(x-y), n)
-	return -1
-
-def dixon(n):
-
-	primes = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 
-		37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 
-		83, 89, 97, 101, 103, 107, 109, 113, 127, 
-		131, 137, 139, 149, 151, 157, 163, 167, 
-		173, 179, 181, 191, 193, 197, 199]
-
-	base = primes[:3]
-
-	start = int(sqrt(n))
-
-	pairs = []
-
-	for i, item in itertools.product(range(start, n), base):
-		lhs = i**2 % n
-		rhs = item**2 % n
-
-		if (lhs == rhs):
-			pairs.append([i, item])
-
-	new = []
-
-	for pair in pairs:
-		factor = gcd(pair[0] - pair[1], n)
-
-		if(factor != 1):
-			new.append(factor)
-
-	x = np.array(new)
-	return(np.unique(x))
 
 
 if __name__ == "__main__":  # main funciton loop
 	tests = [1762741, 6937031, 3572694269, 498587077741,
 			 388616539515299129, 24232273352113381895280635789,
 			 213016805697990920376675714115937442919]
+	#curr_test = tests[int(input("case? ")) % 7]
 	curr_test = tests[0]
 
 	print(f"testing {curr_test}")
-	# print(brute_force(curr_test))
-	d, a, b = pollard_rho(curr_test)
-	print(f"d = {d}, a = {a}, b = {b}")
 
-	print(fast_MR(curr_test, 30))
+	print(f"brute: factor = {brute_force(curr_test)}")
 
-	#div = curr_test/d
-	#print(f"{d} * {div} = {curr_test}")
+	print(f"rho: factor = {pollard_rho(curr_test)}")
+
+	print(f"Dixon: factor = {dixon(curr_test)}")
