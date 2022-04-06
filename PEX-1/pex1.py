@@ -29,19 +29,24 @@ def main():
 			print(f"\n\nFactoring: {test_num}")
 
 			print("\nBrute force factoring")
-			factor, time = attempt_factor(test_funct = brute_force, test_prime = test_num, attempt_count = 1)
+			factor, time = attempt_factor(test_funct = brute_force, test_prime = test_num, attempt_count = 1, t_limit=2)
 			if factor == -1:
 				print(f"{test_num} appears to be prime.")
 			elif factor != -2:
+				time = "{:.2f}".format(time)
 				print(f"Found a factor = {factor}\nIt took {time} seconds.")
 
 			print("\nPollard's Rho")
-			factor_arry, time = attempt_factor(test_funct = pollard_rho, test_prime = test_num, attempt_count = 2)
-			if factor_arry[0] == -1:
+			factor_arry, time = attempt_factor(test_funct = pollard_rho, test_prime = test_num, attempt_count = 3, t_limit=2)
+			if factor_arry == -2:
+				continue
+			elif factor_arry[0] == -1:
 				print(f"{test_num} appears to be prime.")
-			elif factor_arry != -2:
+			else:
 				factor, a, b = factor_arry[0], factor_arry[1], factor_arry[2]
+				time = "{:.2f}".format(time)
 				print(f"Found a factor = {factor}\na = {a}, b = {b}\nIt took {time} seconds.")
+
 
 
 
