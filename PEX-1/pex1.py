@@ -1,7 +1,8 @@
 from timeout import attempt_factor
 from factorAlgos import brute_force, pollard_rho, dixon
 
-def main():
+
+if __name__ == "__main__":
 	print("PEX1 - Factoring! - by C/Wang \nCyS 431")
 
 	while True: # main driver funct
@@ -26,10 +27,11 @@ def main():
 		else:
 			cases.append(int(number))
 		for test_num in cases:
+
 			print(f"\n\nFactoring: {test_num}")
 
 			print("\nBrute force factoring")
-			factor, time = attempt_factor(test_funct = brute_force, test_prime = test_num, attempt_count = 1, t_limit=2)
+			factor, time = attempt_factor(test_funct = brute_force, test_prime = test_num, attempt_count = 1)
 			if factor == -1:
 				print(f"{test_num} appears to be prime.")
 			elif factor != -2:
@@ -37,7 +39,7 @@ def main():
 				print(f"Found a factor = {factor}\nIt took {time} seconds.")
 
 			print("\nPollard's Rho")
-			factor_arry, time = attempt_factor(test_funct = pollard_rho, test_prime = test_num, attempt_count = 3, t_limit=2)
+			factor_arry, time = attempt_factor(test_funct = pollard_rho, test_prime = test_num)
 			if factor_arry == -2:
 				pass
 			elif factor_arry[0] == -1:
@@ -47,5 +49,10 @@ def main():
 				time = "{:.2f}".format(time)
 				print(f"Found a factor = {factor}\na = {a}, b = {b}\nIt took {time} seconds.")
 
-if __name__ == "__main__":
-	main()
+			print("\nDixon's Algorithm")
+			factor, time = attempt_factor(test_funct = dixon, test_prime = test_num, f_base=True, t_limit= 5)
+			if factor == -1:
+				print(f"{test_num} appears to be prime.")
+			elif factor != -2:
+				time = "{:.2f}".format(time)
+				print(f"Found a factor = {factor}\nIt took {time} seconds.")

@@ -21,12 +21,18 @@ def run_forever():
 		time.sleep(1)
 		second += 1
 
-def attempt_factor(attempt_count = 3, t_limit = 120, test_funct = run_forever, test_prime = None):
+def attempt_factor(attempt_count = 3, t_limit = 120, test_funct = run_forever, test_prime = None, f_base = False):
 	for i in range(attempt_count):
 		try:
-			with timeout(seconds = t_limit):
+			if f_base:
+				f_input = int(input("Enter # of factors in factor base: "))
 				start_time = time.time()
-				return(test_funct(test_prime)), time.time() - start_time
+				with timeout(seconds = t_limit):
+					return test_funct(test_prime, f_input), time.time() - start_time
+			else:
+				start_time = time.time()
+				with timeout(seconds = t_limit):
+					return(test_funct(test_prime)), time.time() - start_time
 		except Exception:
 			print(f"Attempt {i+1} failed to factor in under {t_limit} seconds")
 	return -2, -2

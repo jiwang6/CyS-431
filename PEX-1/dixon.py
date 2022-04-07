@@ -1,6 +1,6 @@
 import numpy as np
 from primegen import gen_primes
-import random
+
 from math import isqrt, gcd
 import itertools
 
@@ -78,6 +78,7 @@ def dixon(n,t=5):
 				yp = (-1 * y) % n
 				if x not in [y, yp]:
 					return( gcd(abs(x-y), n))
+	return -1
 
 
 if __name__ == "__main__":
