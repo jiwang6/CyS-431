@@ -15,7 +15,7 @@ def dixon(n,t=5):
 	R = t+1
 
 
-	for i in range(R): # generate 2*t good equations
+	for j in range(R): # generate 2*t good equations
 		good_eq = False
 		k = 0
 		while not good_eq:
@@ -45,31 +45,39 @@ def dixon(n,t=5):
 		good_RHS.append(rhs)
 		g_mat = np.vstack([g_mat, EV])
 
-		print(f"{i} {lhs}^2 == {rhs} {EV}")
+		print(f"{j} {lhs}^2 == {rhs} {EV}")
 
 	g_mat = np.delete(g_mat, 0, 0)
 
 	g_mod = g_mat % 2
 
 	index_set = list(range(R))
+	combo_range = list(range(1,R+1))
 
-	for L in range(1,R+1):
-		print(f"choosing {L}")
+	a = np.array(range(int(R/2) + 2))
+	b = -1 * np.array(range(1,int(R/2 + 2)))
+
+	c = np.array(list(zip(a,b)))
+	c = c.flatten()[:-1]
+
+	for i in c:
+		L = combo_range[i]
+		print(f"choosing {L}, index {i}")
 		for subset in itertools.combinations(index_set, L):
 			sum_arry = np.zeros(t)
 			lhs_prod = 1
 			rhs_prod = 1
-			for i in subset:
-				sum_arry += g_mod[i]
-				lhs_prod *= good_LHS[i]
-				rhs_prod *= good_RHS[i]
+			for j in subset:
+				sum_arry += g_mod[j]
+				lhs_prod *= good_LHS[j]
+				rhs_prod *= good_RHS[j]
 			sum_arry = sum_arry % 2
 			if np.all(sum_arry == 0):
 				x = lhs_prod % n
 				y = isqrt(rhs_prod) % n
 				yp = (-1 * y) % n
 				if x not in [y, yp]:
-					print( gcd(abs(x-y), n))
+					return( gcd(abs(x-y), n))
 
 
 
@@ -86,5 +94,5 @@ def dixon(n,t=5):
 
 
 if __name__ == "__main__":
-	print(dixon(388616539515299129, 70))
+	print(dixon(498587077741, 50))
     
