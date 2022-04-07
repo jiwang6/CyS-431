@@ -68,7 +68,7 @@ def gen_EV(n, t):
 		good_RHS.append(rhs)
 		g_mat = np.vstack([g_mat, EV])
 
-		print(f"{j} {lhs}^2 == {rhs} {EV}")
+		print(f"{j+1} {lhs}^2 == {rhs} {EV}")
 
 	return good_LHS, good_RHS, np.delete(g_mat, 0, 0)
 
