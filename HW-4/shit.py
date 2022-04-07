@@ -19,8 +19,8 @@ def miller_rabin(n, t):
 		a = random.randrange(2, n - 1)
 		y = pow(a, r, n)
 		print(f"{y} = {a}^{r} (mod {n})")
-		
-		if y == 1 or y == n - 1:
+
+		if y in [1, n - 1]:
 			continue
 		for _ in range(s - 1):
 			y = pow(y, 2, n)

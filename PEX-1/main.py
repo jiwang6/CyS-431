@@ -1,6 +1,19 @@
+#!/usr/bin/env python3  
+# -*- coding: utf-8 -*- 
+#----------------------------------------------------------------------------
+# Created By  : C1C Jim Wang
+# Created Date: 06 April
+# Documentation: Pollard's Rho from
+# 					 https://gist.github.com/thomdixon/dd1e280681f16535fbf1
+# 				 C1C Rotzal helped me generate my x terms
+#				 C1C Milham helped me implement combinatorial 
+# 					selection from fringes.
+#				 Signals library from
+# 					https://stackoverflow.com/questions/2281850/timeout-function-if-it-takes-too-long-to-finish
+# ---------------------------------------------------------------------------
+
 from timeout import attempt_factor
 from factorAlgos import brute_force, pollard_rho, dixon
-
 
 if __name__ == "__main__":
 	print("PEX1 - Factoring! - by C/Wang \nCyS 431")

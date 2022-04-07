@@ -1,6 +1,6 @@
 import signal
 import time
-from factorAlgos import brute_force, pollard_rho
+from factorAlgos import pollard_rho
 
 class timeout:
 	def __init__(self, seconds=1, error_message='Timeout'):
