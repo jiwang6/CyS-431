@@ -60,7 +60,7 @@ def dixon(n,t=5):
 			lhs_prod = 1
 			rhs_prod = 1
 			for i in subset:
-				sum_arry+= g_mod[i]
+				sum_arry += g_mod[i]
 				lhs_prod *= good_LHS[i]
 				rhs_prod *= good_RHS[i]
 			sum_arry = sum_arry % 2
