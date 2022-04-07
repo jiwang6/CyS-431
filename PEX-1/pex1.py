@@ -50,7 +50,7 @@ if __name__ == "__main__":
 				print(f"Found a factor = {factor}\na = {a}, b = {b}\nIt took {time} seconds.")
 
 			print("\nDixon's Algorithm")
-			factor, time = attempt_factor(test_funct = dixon, test_prime = test_num, f_base=True, t_limit= 5)
+			factor, time = attempt_factor(test_funct = dixon, test_prime = test_num, f_base=True)
 			if factor == -1:
 				print(f"{test_num} appears to be prime.")
 			elif factor != -2:
