@@ -54,18 +54,22 @@ def dixon(n,t=5):
 	index_set = list(range(R))
 
 	for L in range(1,R+1):
-		print(f"choosing {L+1}")
+		print(f"choosing {L}")
 		for subset in itertools.combinations(index_set, L):
 			sum_arry = np.zeros(t)
+			lhs_prod = 1
+			rhs_prod = 1
 			for i in subset:
 				sum_arry+= g_mod[i]
-
-			if np.all(sum_arry % 2 == 0):
-				x = good_LHS[i] % n
-				y = isqrt(good_RHS[i]) % n
+				lhs_prod *= good_LHS[i]
+				rhs_prod *= good_RHS[i]
+			sum_arry = sum_arry % 2
+			if np.all(sum_arry == 0):
+				x = lhs_prod % n
+				y = isqrt(rhs_prod) % n
 				yp = (-1 * y) % n
 				if x not in [y, yp]:
-					return( gcd(abs(x-y), n))
+					print( gcd(abs(x-y), n))
 
 
 
@@ -82,5 +86,5 @@ def dixon(n,t=5):
 
 
 if __name__ == "__main__":
-	print(dixon(388616539515299129, 50))
+	print(dixon(388616539515299129, 70))
     
