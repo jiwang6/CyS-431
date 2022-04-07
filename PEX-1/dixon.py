@@ -1,43 +1,86 @@
 import numpy as np
 from primegen import gen_primes
 import random
-
+from math import isqrt, gcd
+import itertools
 
 def dixon(n,t=5):
 	
 	base = gen_primes(t)
 	print("Done generating factor base.")
 
-	good_LHS =[]
-	
-	for _ in range(t):
-		new_int = random.randint(2,n-1)
-		while new_int in good_LHS: # prevents dup
-			new_int = random.randint(2,n-1)
-		good_LHS.append(new_int)
+	good_LHS, good_RHS, bad_LHS= [], [], []
+	g_mat = np.zeros(t)
 
-	good_RHS = [pow(i,2,n) for i in good_LHS]
-
-	print(base)
-	print(good_LHS)
-	print(good_RHS)
-
-	g_matrix = np.zeros(t)
-
-	for rhs in good_RHS:
-		EV = np.zeros(t)
-
-		for b_index in range(t):
-			while rhs % base[b_index] == 0:
-				rhs /= base[b_index]
-				EV[b_index] +=1
-		print(EV)
+	R = t+1
 
 
-	print(g_matrix)
-	print(good_RHS)
+	for i in range(R): # generate 2*t good equations
+		good_eq = False
+		k = 0
+		while not good_eq:
+			k +=1
+			EV = np.zeros(t)
+
+			lhs = isqrt(k*n) + 1
+			if lhs in good_LHS + bad_LHS: # eliminate duplicates
+				continue
+
+			rhs = pow(lhs,2,n)
+			if rhs in [0,1]:
+				continue # if rhs is stupid
+
+			test_rhs = rhs
+
+			for b_index in range(t): # for each base in prime base
+				while test_rhs % base[b_index] == 0: 
+					test_rhs /= base[b_index]
+					EV[b_index] +=1 
+			if test_rhs == 1:
+				good_eq = True
+			else:
+				bad_LHS.append(lhs)
+
+		good_LHS.append(lhs)
+		good_RHS.append(rhs)
+		g_mat = np.vstack([g_mat, EV])
+
+		print(f"{i} {lhs}^2 == {rhs} {EV}")
+
+	g_mat = np.delete(g_mat, 0, 0)
+
+	g_mod = g_mat % 2
+
+	index_set = list(range(R))
+
+	for L in range(1,R+1):
+		print(f"choosing {L+1}")
+		for subset in itertools.combinations(index_set, L):
+			sum_arry = np.zeros(t)
+			for i in subset:
+				sum_arry+= g_mod[i]
+
+			if np.all(sum_arry % 2 == 0):
+				x = good_LHS[i] % n
+				y = isqrt(good_RHS[i]) % n
+				yp = (-1 * y) % n
+				if x not in [y, yp]:
+					return( gcd(abs(x-y), n))
+
+
+
+""" 
+	for L in range(R+1):
+		for subset in itertools.combinations(g_mod, L+1):
+			print(subset)
+			sum_arry = np.asarray(subset).sum(axis= 0)
+			print(sum_arry)
+			mod_arry = sum_arry % 2
+			if np.all(mod_arry==0): 
+"""
+				
 
 
 if __name__ == "__main__":
-	dixon(187, 10)
+	print(dixon(388616539515299129, 50))
     
