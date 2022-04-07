@@ -12,7 +12,7 @@ def dixon(n,t=5):
 	good_LHS, good_RHS, bad_LHS= [], [], []
 	g_mat = np.zeros(t)
 
-	R = t+1
+	R = t
 
 
 	for j in range(R): # generate 2*t good equations
@@ -80,19 +80,6 @@ def dixon(n,t=5):
 					return( gcd(abs(x-y), n))
 
 
-
-""" 
-	for L in range(R+1):
-		for subset in itertools.combinations(g_mod, L+1):
-			print(subset)
-			sum_arry = np.asarray(subset).sum(axis= 0)
-			print(sum_arry)
-			mod_arry = sum_arry % 2
-			if np.all(mod_arry==0): 
-"""
-				
-
-
 if __name__ == "__main__":
-	print(dixon(498587077741, 50))
+	print(dixon(388616539515299129, 1400))
     
