@@ -104,7 +104,11 @@ def dixon(n,t=5):
 				x = lhs_prod % n
 				y = isqrt(rhs_prod) % n
 				yp = (-1 * y) % n
+
+				eq_array = [i + 1 for i in subset]
+
 				if x not in [y, yp]:
+					print(f"combine eqs {eq_array}")
 					return( gcd(abs(x-y), n))
 	return -1
 
