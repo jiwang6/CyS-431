@@ -14,7 +14,7 @@ Anyway, HW-1 focused on classical ciphers and basic entropy.
 
 ### Homework 2
 
-From here on out, I hand wrote my homework
+From here on out, I hand wrote my homework.
 
 HW-2 focused on mod math and EEA.
 
