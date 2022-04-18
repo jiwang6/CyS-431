@@ -1,6 +1,6 @@
 # CyS-431
 
-So apparently I'd rather do this than do actually homework.
+So apparently I'd rather do this than do actual homework.
 
 ## Homeworks
 
@@ -8,7 +8,7 @@ Grading focuses too little on comprehension and too much on the algorithms. Anyw
 
 ### Homework 1
 
-I decided to this this entire homework in a Jupyter notebook because I thought I would get extra credit. I did not get extra credit but learned a lot about inline LaTeX. It was not worth
+I decided to this this entire homework in a Jupyter notebook because I thought I would get extra credit. I did not get extra credit but learned a lot about inline LaTeX. It was not worth.
 
 Anyway, HW-1 focused on classical ciphers and basic entropy.
 
