@@ -43,10 +43,39 @@ def find_collison(test_bin, hash, random_gen = True,
 			
 			if bytes_tried - successful_try > max_length:
 				test_bin = original_bin
-				print(f"No hash found for {max_length} hashes, resetting binary")
+				print(f"No hash found for {max_length} hashes,"
+					+ " resetting binary")
 				successful_try = bytes_tried
 
-			test_bin += bytes([random.randint(0, 255)]) if random_gen else append_val
+			if random_gen:
+				test_bin += bytes([random.randint(0, 255)]) i
+			else:
+				test_bin += append_val
+
+def cheat_alice(hash, price):
+	byte_str = ("This is a contract between Alice and Bob. Alice agrees "
+		+ "to sell to Bob her NFT art for a price of: $" + str(price))
+	byte_str = bytes(byte_str, "utf-8")
+	print(byte_str)
+
+	invisible_arry = [chr(2000), chr(2001), chr(2002),
+		chr(2003), chr(2004), chr(2005), chr(2006),
+		chr(2007), chr(2008), chr(2009)]
+
+	while True:
+		#select random from invisible_arry
+		rand_char = random.choice(invisible_arry)
+		print(f"appending{rand_char}")
+		byte_str += bytes(rand_char, "utf-8")
+		test_tiny = hash_str(byte_str)[:5]
+		#print(f"Trying: {test_tiny}")
+		if test_tiny == hash:
+			print("collision found")
+			with open("col/collisionNFT.txt", 'wb') as file:
+				file.write(byte_str)
+		
+
+
 
 if __name__ == "__main__":
 	filename = "src-files/samplefile.txt"
@@ -54,4 +83,6 @@ if __name__ == "__main__":
 	md5_full = hash_str(file_bin)
 	tiny_hash = md5_full[:5]
 
-	find_collison(file_bin, tiny_hash)
+	#find_collison(file_bin, tiny_hash)
+	cheat_alice(tiny_hash, 1)
+	
