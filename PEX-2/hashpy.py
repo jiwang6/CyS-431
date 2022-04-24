@@ -48,7 +48,7 @@ def find_collison(test_bin, hash, random_gen = True,
 				successful_try = bytes_tried
 
 			if random_gen:
-				test_bin += bytes([random.randint(0, 255)]) i
+				test_bin += bytes([random.randint(0, 255)])
 			else:
 				test_bin += append_val
 
