@@ -51,71 +51,30 @@ def find_collison(test_bin, tiny_val, random_gen = True,
 			
 			test_bin += random_byte if random_gen else append_val
 
-def cheat_alice(tiny_val, price):
-	
+def cheat_alice(tiny_val): # we probably need to iterate through prices
+	price = 1
+
 	byte_str = ("This is a contract between Alice and Bob. Alice agrees "
 		+ "to sell to Bob her NFT art for a price of: $" + str(price))
-	byte_str = bytes(byte_str, "utf-8")
 	
-	print(byte_str)
-
-	print(tiny_val)
-
-	original_bin = byte_str
-
-
-	num_col = 0
-	bytes_tried = 0
-	successful_try = 0
-
-	while True:
-		for i in range(0xff):
-			append_val = bytes([i])
-			for j in range(0xff):
-				test_val = bytes([j])
-				temp_bin = byte_str + test_val
-				test_tiny = hash_str(temp_bin)[:5]
-				bytes_tried += 1
-
-				if test_tiny == tiny_val:
-					print(f"Collision #{num_col+1} found after {bytes_tried} " + 
-						f"bytes (size: {bytes_tried-successful_try} bytes)")
-					successful_try = bytes_tried
-					num_col += 1
-
-					with open(f"col/contract{num_col}.txt", 'wb') as file:
-						file.write(temp_bin)
-					print(f"Collision saved as file: contract{num_col}.txt")
-					if num_col == 1:
-						return
-					byte_str = original_bin
-
-			if bytes_tried - successful_try > 600000:
-				byte_str = original_bin
-				print(("No hash found for 600000 hashes, resetting binary"))
-				successful_try = bytes_tried
-
-			random_byte = bytes([random.randint(0, 255)])
-
-			byte_str += random_byte
-		
-
+	byte_str = bytes(byte_str, "utf-8")
 
 
 if __name__ == "__main__":
-	# load files in and init vars
+	# init vars for textbook task
 	filename = "src-files/samplefile.txt"
 	file_bin = read_bin(filename)
 	md5_full = hash_str(file_bin)
 	tiny_hash = md5_full[:5]
-
+	print(tiny_hash)
 	find_collison(file_bin, tiny_hash)
 
-
+	# init vars for NFT task
 	filename = "src-files/contract.txt"
 	file_bin = read_bin(filename)
 	md5_full = hash_str(file_bin)
 	tiny_hash = md5_full[:5]
 
-	cheat_alice(tiny_hash, 1)
-	
+	cheat_alice(tiny_hash)
+
+
