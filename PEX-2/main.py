@@ -7,7 +7,7 @@
 # ---------------------------------------------------------------------------
 
 # import modules
-from hashpy import hash_str, find_collison, read_bin
+from hashpy import hash_str, find_collison, read_bin, cheat_alice
 
 
 print("CyS 431 PEX2 - Hash Collider - by C/Wang")
@@ -25,19 +25,18 @@ print(f"Running hash collision for file: {filename}")
 print(f"Full MD5 digest is: {md5_full}")
 print(f"TinyHash digest is: {tiny_hash}")
 
-settings_bool = input("Settings? (y/n): ")
-settings_bool = settings_bool == "y"
-
 random_gen = "y"
 reset_val = "y"
 max_len = 600000
 
-if settings_bool:
-	random_gen = input("Random gen? (y/n): ")
-	random_gen = random_gen == "y"
+find_collison(file_bin, tiny_hash, random_gen, hash_len, max_len)
 
-	reset_val = input("Reset file after every collision? (y/n): ")
-	reset_val = reset_val == "y"
+print("\nStarting task 2...\n")
+print("Running Hash Collision for file: contract.txt")
+cont_hash = hash_str(read_bin('src-files/contract.txt'))
+print(f"Full MD5 digest is: {cont_hash}")
+print(f"TinyHash digest is: {cont_hash[:5]}")
 
 
-find_collison(file_bin, tiny_hash, random_gen, reset_val, hash_len, max_len)
+
+cheat_alice(cont_hash[:5])
