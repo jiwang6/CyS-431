@@ -52,12 +52,35 @@ def find_collison(test_bin, tiny_val, random_gen = True,
 			test_bin += random_byte if random_gen else append_val
 
 def cheat_alice(tiny_val): # we probably need to iterate through prices
-	price = 1
-
-	byte_str = ("This is a contract between Alice and Bob. Alice agrees "
-		+ "to sell to Bob her NFT art for a price of: $" + str(price))
+	alt_contents = ("This is a contract between Alice and Bob. Alice agrees "
+		+ "to sell to Bob her NFT art for a price of: $")
 	
-	byte_str = bytes(byte_str, "utf-8")
+
+	alt_contents = bytes(alt_contents, "utf-8")
+
+	orig = alt_contents
+
+	for price in range(100000):
+		alt_contents += bytes(str(price), "utf-8")
+
+		alt_hash = hash_str(alt_contents)[:5]
+
+		#print(f"trying price: {price}\n hash: {alt_hash}, {tiny_hash}")
+		if alt_hash[:5] == tiny_val:
+			# alt_contents to file
+			print(f"Found price: {price}")
+			with open("col/contract.txt", "wb") as file:
+				file.write(alt_contents)
+			return
+
+		alt_contents = orig
+		
+	return -1
+
+		
+
+
+		
 
 
 if __name__ == "__main__":
@@ -74,6 +97,7 @@ if __name__ == "__main__":
 	file_bin = read_bin(filename)
 	md5_full = hash_str(file_bin)
 	tiny_hash = md5_full[:5]
+	print(tiny_hash)
 
 	cheat_alice(tiny_hash)
 
