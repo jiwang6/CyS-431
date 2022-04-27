@@ -30,7 +30,7 @@ def find_collison(test_bin, tiny_val, reset = True, hash_len = 5,
 				successful_try = bytes_tried
 				num_col += 1
 
-				with open(f"col/collision{num_col}.txt", 'wb') as file:
+				with open(f"collisions/collision{num_col}.txt", 'wb') as file:
 					file.write(temp_bin)
 				print(f"Collision saved as file: collision{num_col}.txt")
 				if num_col == 5:
@@ -65,7 +65,7 @@ def cheat_alice(tiny_val): # we probably need to iterate through prices
 			# alt_contents to file
 			print(f"Found TinyHash Collision using this number: {price}")
 			print("New contract saved to file: newcontract.txt")
-			with open("col/newcontract.txt", "wb") as file:
+			with open("collisions/newcontract.txt", "wb") as file:
 				file.write(alt_contents)
 			return
 

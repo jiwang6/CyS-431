@@ -2,8 +2,8 @@
 # -*- coding: utf-8 -*-
 # ----------------------------------------------------------------------------
 # Created By  : C1C Jim Wang
-# Created Date: 21 April
-# Documentation:
+# Created Date: 27 April
+# Documentation: none.
 # ---------------------------------------------------------------------------
 
 # import modules
