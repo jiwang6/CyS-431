@@ -40,5 +40,5 @@ cont_hash = hash_str(read_bin('src-files/contract.txt'))
 print(f"Full MD5 digest is: {cont_hash}")
 print(f"TinyHash digest is: {cont_hash[:5]}")
 
-#run collider
+# run collider
 cheat_alice(cont_hash[:5])
